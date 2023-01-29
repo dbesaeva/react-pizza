@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
   margin: 0;
   font-family: 'Montserrat', system-ui;
   -webkit-font-smoothing: antialiased;
@@ -11,8 +12,8 @@ body {
 }
 
 .wrapper {
-  max-width: 1380px;
-  margin: 50px auto;
+  max-width: 1480px;
+  margin: 30px auto;
   margin-right: 5%;
 }
 
@@ -32,6 +33,48 @@ header {
 
   h3,p {
     margin: 0;
+  }
+}
+
+.main-page {
+  h1 {
+    position: absolute;
+    right: 469px;
+    top: 251px;
+    font-size: 50px;
+  }
+  p {
+    position: absolute;
+    width: 505px;
+    right: 192px;
+    top: 379px;
+    font-size: 20px;
+    font-weight: 55px;
+    line-height: 28px;
+  }
+  .img-left {
+    position: absolute;
+    width: 817px;
+    height: 543px;
+    left: -459px;
+    top: 305px;
+  }
+  .img-right {
+    position: absolute;
+    width: 817px;
+    height: 543px;
+    left: 1579px;
+    top: 296px;
+  }
+  .order-now {
+    position: absolute;
+    left: 1029px;
+    top: 672px;
+  }
+  .add-to-cart {
+    position: absolute;
+    left: 1274px;
+    top: 672px;
   }
 }
 
