@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  width: 1728px;
+  height: 1117px;
+  background: linear-gradient(129.35deg, #724521 16.71%, #482D1D 80.54%);
+  color: white;
+}
+
+.wrapper {
+  max-width: 1380px;
+  margin: 50px auto;
+  margin-right: 5%;
+}
+
+header {
+  .name {
+    font-family: 'Jolly Lodger', cursive;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 60px;
+    line-height: 97px;
+    color: white;
+  }
+  img {
+    margin-right: 15px;
+    vertical-align: middle;
+  }
+
+  h3,p {
+    margin: 0;
+  }
+}
+
+
