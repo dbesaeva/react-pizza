@@ -1,7 +1,47 @@
-
 function App() {
   return (
     <div className="wrapper clear">
+
+    <div className="overlay">
+      <div className="drawer">
+        <h2 className="d-flex justify-between mb-30">Cart
+          <img className="cu-p" src="img/btn-remove.svg" alt="Close"/>
+        </h2>
+        <div className="d-flex flex-column flex">
+          <div className="items flex"> 
+            <div className="cartItem d-flex align-center mb-20">
+              <div className="mr-20 flex">
+                  <p className="mb-5">ggg</p>
+                  <b>1000 rub.</b>
+              </div>
+              <img 
+                  width={53} height={23}
+                  className="removeBtn" 
+                  src="img/btn-remove.svg" 
+                  alt="Remove"
+              />
+            </div>                 
+          </div> 
+
+          <div className="cartTotalBlock">
+            <ul>
+              <li>
+              <span>Total:</span>
+              <div></div>
+              <b>1200 rub.</b>
+              </li>
+              <li>
+              <span>Tax 4%:</span>
+              <div></div>
+              <b>1100 rub.</b>
+              </li>
+            </ul>
+            <button className="greenButton">Сheckout <img src="img/arrow.svg" alt="Arrow"/></button>
+          </div>
+        </div>
+      </div> 
+    </div>
+
       <header className="d-flex justify-between align-center p-40">
         <div className="name d-flex align-center">
             <div>
@@ -11,7 +51,7 @@ function App() {
         <ul className="d-flex">
           <li className="mr-30 cu-p">
               <img width={23} height={23} src="img/shopping-bag.svg" alt="Cart" />
-              <span>1300 руб.</span>
+              <span>1300 rub.</span>
           </li>
           <li className='mr-20 cu-p'>
                 <img className="mr-30 cu-p" width={23} height={23} src="img/favorite.svg" alt="Favorites" />
@@ -32,6 +72,28 @@ function App() {
         <img className="img-right" src="img/pizza.png" alt="PizzaRight" />
         <img className="order-now" src="img/order-now-button.png" alt="Order" />
         <img className="add-to-cart" src="img/add-to-cart.png" alt="AddCart" />
+      </div>
+
+      <div className="catalog">
+        <h1 className="p-40 m-20">All Pizzas</h1>
+        <div className="card m-40">
+            <div className="favorite">
+              <img src="img/favorite.svg" alt="Unliked"/>
+            </div>
+            <img className="image" width={159} height={208} src="img/pizzas/pizza.svg" alt="Bags"/>
+            <h5>Marghretia</h5>
+            <div className="d-flex justify-between align-center">
+                <div className="d-flex flex-column">
+                <span>Price:</span>
+                <b>1200 rub.</b>
+                </div>
+                  <img 
+                    className="plus"
+                    src="img/btn-plus.svg"
+                    alt="Plus"
+                  />
+            </div>
+        </div>  
       </div>
     </div>
   );
