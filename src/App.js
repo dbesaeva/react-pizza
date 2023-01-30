@@ -59,6 +59,7 @@ function App() {
               <img width={19} height={19} src="img/user.svg" alt="User" />
         </ul>
       </header>
+
       <div className="main-page">
         <h1 className="pr-10">Bestseller</h1>
         <p>
@@ -74,8 +75,20 @@ function App() {
         <img className="add-to-cart" src="img/add-to-cart.png" alt="AddCart" />
       </div>
 
-      <div className="catalog">
-        <h1 className="p-40 m-20">All Pizzas</h1>
+      <div className="catalog p-20">
+      <div className="d-flex align-center justify-between mb-20">
+      <h1 className="m-40">All Pizzas</h1>
+                <div className="search-block d-flex">
+                    <img src="img/search.svg" alt="Search"/>
+                        <img
+                          className="clear cu-p"
+                          src="img/remove.svg"
+                          alt="Clear"
+                        />
+                    <input placeholder="Поиск..."/>
+                </div>
+            </div>
+        
         <div className="card m-40">
             <div className="favorite">
               <img src="img/favorite.svg" alt="Unliked"/>
