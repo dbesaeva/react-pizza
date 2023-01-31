@@ -10,6 +10,7 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('');
 
   React.useEffect(() => {
     async function fetchData() {
@@ -28,6 +29,10 @@ function App() {
     setCartItems(prev => [...prev, obj]);
   } 
 
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value);
+  }
+
   return (
     <div className="wrapper clear">
       {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)}/>}
@@ -37,6 +42,9 @@ function App() {
         items={items}
         onAddToCart={onAddToCart}
         cartItems={cartItems}
+        onChangeSearchInput={onChangeSearchInput}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
       />
     </div>
   );
