@@ -1,12 +1,24 @@
 import React from "react";
 import Card from "../components/Card";
-
-const arr = [
-    {title:"Marghretia", price:"1200 rub.", imageUrl:"img/pizzas/pizza.svg",},
-    {title:"Piniata", price:1200, imageUrl:"img/pizzas/pizza.svg",},
-];
+import axios from 'axios';
 
 function Home() {
+
+    const [items, setItems] = React.useState([]);
+
+    React.useEffect(() => {
+        async function fetchData() {
+            try {
+                const itemsResponse = await axios.get('https://shift-winter-2023-backend.onrender.com/api/pizza')
+                setItems(itemsResponse.data);
+            }
+            catch(error) {
+                alert('Ошибка при запросе данных');
+            }
+        }
+        fetchData();
+    }, []);
+
     return (
         <div className="catalog p-20">
             <div className="d-flex align-center justify-between mb-20">
@@ -22,13 +34,14 @@ function Home() {
                 </div>
             </div>
             <div className="d-flex">
-                {arr.map((obj) => (
+                {items.map((obj) => (
                     <Card 
-                        title={obj.title}
-                        price={obj.price}
-                        imageUrl={obj.imageUrl}
+                        name={obj.name}
+                        price={obj.price.default}
+                        imageUrl={obj.img}
                         onClick={() => console.log(obj)}
-                />
+                    />
+                    
                 ))}
             </div>
         </div>

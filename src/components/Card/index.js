@@ -14,8 +14,8 @@ function Card(props) {
             <div className={styles.favorite}>
                 <img src="img/favorite.svg" alt="Unliked"/>
             </div>
-            <img className={styles.image} width={159} height={208} src={props.imageUrl} alt="Pizzas"/>
-            <h5>{props.title}</h5>
+            <img className={styles.image} width={150} height={150} src={props.imageUrl} alt="Pizzas"/>
+            <h5>{props.name}</h5>
             <div className="d-flex justify-between align-center">
                 <div className="d-flex flex-column">
                     <span>Price:</span>
