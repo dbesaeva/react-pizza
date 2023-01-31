@@ -15,8 +15,12 @@ function App() {
   React.useEffect(() => {
     async function fetchData() {
         try {
-            const itemsResponse = await axios.get('https://shift-winter-2023-backend.onrender.com/api/pizza')
+            const [cartResponse, itemsResponse] = await Promise.all([
+              axios.get('https://63737c01348e9472990db5c5.mockapi.io/cart'),
+              axios.get('https://shift-winter-2023-backend.onrender.com/api/pizza'),
+            ]);
             setItems(itemsResponse.data);
+            setCartItems(cartResponse.data);
         }
         catch(error) {
             alert('Ошибка при запросе данных');
@@ -26,8 +30,18 @@ function App() {
   }, []);
 
   const onAddToCart = (obj) => {
+    axios.post('https://63737c01348e9472990db5c5.mockapi.io/cart', obj)
     setCartItems(prev => [...prev, obj]);
   } 
+
+  const onRemoveItem = (id) => {
+    try {
+      axios.delete(`https://63737c01348e9472990db5c5.mockapi.io/cart/${id}`);
+      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
+    } catch (error) {
+      alert('Ошибка при удалении из корзины');
+    }
+  }
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
@@ -35,7 +49,7 @@ function App() {
 
   return (
     <div className="wrapper clear">
-      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)}/>}
+      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
       <Header onClickCart={() => setCartOpened(true)} />
       <Info />
       <Home 

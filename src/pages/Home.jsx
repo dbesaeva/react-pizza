@@ -3,7 +3,7 @@ import Card from "../components/Card";
 
 function Home(
     {items, onAddToCart, searchValue, setSearchValue, 
-    onChangeSearchInput
+    onChangeSearchInput, onRemoveItem
     }) {
     return (
         <div className="catalog p-20">
@@ -23,11 +23,13 @@ function Home(
                 </div>
             </div>
             <div className="d-flex">
-                {items.filter((item) => item.name.toLowerCase().includes(searchValue)).map((item) => (
+                {items.filter((item) => item.name.toLowerCase().includes(searchValue)).map((item, index) => (
                     <Card 
+                        key={index}
                         name={item.name}
                         price={item.price.default}
                         imageUrl={item.img}
+                        // onRemove={onRemoveItem}
                         onPlus={(obj) => onAddToCart(obj)}
                     />
                     
