@@ -5,10 +5,13 @@ import Home from './pages/Home';
 import Info from './components/Info';
 
 function App() {
+
+  const [cartOpened, setCartOpened] = React.useState(false);
+
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)}/>}
+      <Header onClickCart={() => setCartOpened(true)} />
       <Info />
       <Home />
     </div>

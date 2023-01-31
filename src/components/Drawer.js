@@ -1,11 +1,11 @@
 import React from "react";
 
-function Drawer() {
+function Drawer(props) {
      return (
         <div className="overlay">
             <div className="drawer">
                 <h2 className="d-flex justify-between mb-30">Cart
-                    <img className="cu-p" src="img/btn-remove.svg" alt="Close"/>
+                    <img onClick={props.onClose} className="cu-p" src="img/btn-remove.svg" alt="Close"/>
                 </h2>
                 <div className="d-flex flex-column flex">
                     <div className="items flex"> 
@@ -18,7 +18,7 @@ function Drawer() {
                                 width={53} height={23}
                                 className="removeBtn" 
                                 src="img/btn-remove.svg" 
-                                alt="Remove"
+                                alt="Remove"                          
                             />
                         </div>                 
                     </div> 
