@@ -1,6 +1,11 @@
 import React from "react";
 import Card from "../components/Card";
 
+const arr = [
+    {title:"Marghretia", price:"1200 rub.", imageUrl:"img/pizzas/pizza.svg",},
+    {title:"Piniata", price:1200, imageUrl:"img/pizzas/pizza.svg",},
+];
+
 function Home() {
     return (
         <div className="catalog p-20">
@@ -16,7 +21,15 @@ function Home() {
                     <input placeholder="Поиск..."/>
                 </div>
             </div>
-            <Card />
+            <div className="d-flex">
+                {arr.map((obj) => (
+                    <Card 
+                    title={obj.title}
+                    price={obj.price}
+                    imageUrl={obj.imageUrl}
+                />
+                ))}
+            </div>
         </div>
     )
 }
