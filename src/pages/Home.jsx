@@ -1,24 +1,7 @@
 import React from "react";
 import Card from "../components/Card";
-import axios from 'axios';
 
-function Home() {
-
-    const [items, setItems] = React.useState([]);
-
-    React.useEffect(() => {
-        async function fetchData() {
-            try {
-                const itemsResponse = await axios.get('https://shift-winter-2023-backend.onrender.com/api/pizza')
-                setItems(itemsResponse.data);
-            }
-            catch(error) {
-                alert('Ошибка при запросе данных');
-            }
-        }
-        fetchData();
-    }, []);
-
+function Home({items, onAddToCart}) {
     return (
         <div className="catalog p-20">
             <div className="d-flex align-center justify-between mb-20">
@@ -34,12 +17,12 @@ function Home() {
                 </div>
             </div>
             <div className="d-flex">
-                {items.map((obj) => (
+                {items.map((item) => (
                     <Card 
-                        name={obj.name}
-                        price={obj.price.default}
-                        imageUrl={obj.img}
-                        onClick={() => console.log(obj)}
+                        name={item.name}
+                        price={item.price.default}
+                        imageUrl={item.img}
+                        onPlus={(obj) => onAddToCart(obj)}
                     />
                     
                 ))}
