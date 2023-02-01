@@ -32,9 +32,8 @@ function App() {
   const onAddToCart = (obj) => {
     async function fetchData() {
       try {
-        const prom = await axios.post('https://63737c01348e9472990db5c5.mockapi.io/cart', obj)
-        setCartItems(prom => [...prom, obj]);
-        console.log(prom)
+        await axios.post('https://63737c01348e9472990db5c5.mockapi.io/cart', obj)
+        setCartItems(prev => [...prev, obj]);
       } catch (error) {
         alert('Ошибка при удалении из корзины');
       }
