@@ -19,8 +19,8 @@ function Card({name, id, imageUrl, price, onPlus}) {
             <h5>{name}</h5>
             <div className="d-flex justify-between align-center">
                 <div className="d-flex flex-column">
-                    <span>Price:</span>
-                    <b>{price}</b>
+                    <span>Цена:</span>
+                    <b>{price} руб.</b>
                 </div>
             <img 
                 className={styles.plus} 

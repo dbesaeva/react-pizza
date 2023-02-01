@@ -8,7 +8,7 @@ function Home(
     return (
         <div className="catalog p-20">
             <div className="d-flex align-center justify-between mb-20">
-                <h1 className="m-40">{searchValue ? `Поиск по запросу: "${searchValue}"` : "All Pizzas"}</h1>
+                <h1 className="m-40">{searchValue ? `Поиск по запросу: "${searchValue}"` : "Все пиццы"}</h1>
                 <div className="search-block d-flex">
                     <img src="img/search.svg" alt="Search"/>
                     {searchValue && (
@@ -26,10 +26,11 @@ function Home(
                 {items.filter((item) => item.name.toLowerCase().includes(searchValue)).map((item, index) => (
                     <Card 
                         key={index}
+                        id={item.id}
                         name={item.name}
                         price={item.price.default}
                         imageUrl={item.img}
-                        // onRemove={onRemoveItem}
+                        onRemove={onRemoveItem}
                         onPlus={(obj) => onAddToCart(obj)}
                     />
                     

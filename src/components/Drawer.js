@@ -1,10 +1,19 @@
 import React from "react";
+import Modal from "./Modal/Modal";
 
 function Drawer({onClose, onRemove, items = []}) {
+
+    // const [isOpenedForm, setIsOpenedForm] = React.useState(false);
+    const [isModal, setModal] = React.useState(false);
+
+    // const openForm = () => {
+    //     setIsOpenedForm(!isOpenedForm);
+    // }
+
      return (
         <div className="overlay">
             <div className="drawer">
-                <h2 className="d-flex justify-between mb-30">Cart
+                <h2 className="d-flex justify-between mb-30">Корзина
                     <img onClick={onClose} className="cu-p" src="img/btn-remove.svg" alt="Close"/>
                 </h2>
                 <div className="d-flex flex-column flex">
@@ -30,17 +39,26 @@ function Drawer({onClose, onRemove, items = []}) {
                     <div className="cartTotalBlock">
                         <ul>
                             <li>
-                                <span>Total:</span>
+                                <span>Итого:</span>
                                 <div></div>
-                                <b>1200 rub.</b>
+                                <b>1200 руб.</b>
                             </li>
                             <li>
-                                <span>Tax 4%:</span>
+                                <span>Налог 4%:</span>
                                 <div></div>
-                                <b>1100 rub.</b>
+                                <b>1100 руб.</b>
                             </li>
                         </ul>
-                        <button className="greenButton">Сheckout <img src="img/arrow.svg" alt="Arrow"/></button>
+                        <>
+                        <button onClick={() => setModal(true)} className="greenButton">Оформить <img src="img/arrow.svg" alt="Arrow"/></button>
+                        <Modal 
+                            isVisible={isModal}
+                            title="Заполните указанную форму"
+                            content={<p>Add your content here</p>}
+                            footer={<button onClick={() => setModal(false)}>Отправить</button>}
+                            onClose={() => setModal(false)}
+                        />
+                        </>
                     </div>
                 </div>
             </div> 

@@ -30,8 +30,16 @@ function App() {
   }, []);
 
   const onAddToCart = (obj) => {
-    axios.post('https://63737c01348e9472990db5c5.mockapi.io/cart', obj)
-    setCartItems(prev => [...prev, obj]);
+    async function fetchData() {
+      try {
+        const prom = await axios.post('https://63737c01348e9472990db5c5.mockapi.io/cart', obj)
+        setCartItems(prom => [...prom, obj]);
+        console.log(prom)
+      } catch (error) {
+        alert('Ошибка при удалении из корзины');
+      }
+    }
+    fetchData();
   } 
 
   const onRemoveItem = (id) => {
