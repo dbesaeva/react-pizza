@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Header from './components/Header';
-import Drawer from './components/Drawer';
+import Drawer from './pages/Drawer';
 import Home from './pages/Home';
-import Info from './components/Info';
+import Info from './components/Info/Info';
 
 function App() {
 

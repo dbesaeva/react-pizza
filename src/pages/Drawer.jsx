@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "./Modal/Modal";
+import Modal from "../components/Modal/Modal";
 
 function Drawer({onClose, onRemove, items = []}) {
 

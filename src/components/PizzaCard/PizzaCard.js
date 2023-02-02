@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Card.module.scss';
+import styles from './PizzaCard.module.scss';
 
-function Card({name, id, imageUrl, price, onPlus}) {
+function PizzaCard({name, id, imageUrl, price, onPlus}) {
 
     const [isAdded, setIsAdded] = React.useState(false);
 
@@ -33,5 +33,5 @@ function Card({name, id, imageUrl, price, onPlus}) {
     );
 }
 
-export default Card;
+export default PizzaCard;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../components/Card";
+import PizzaCard from "../components/PizzaCard/PizzaCard";
 
 function Home(
     {items, onAddToCart, searchValue, setSearchValue, 
@@ -24,7 +24,7 @@ function Home(
             </div>
             <div className="d-flex">
                 {items.filter((item) => item.name.toLowerCase().includes(searchValue)).map((item, index) => (
-                    <Card 
+                    <PizzaCard 
                         key={index}
                         id={item.id}
                         name={item.name}
