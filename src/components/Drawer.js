@@ -55,7 +55,6 @@ function Drawer({onClose, onRemove, items = []}) {
                             isVisible={isModal}
                             title="Заполните указанную форму"
                             content={<p>Add your content here</p>}
-                            footer={<button onClick={() => setModal(false)}>Отправить</button>}
                             onClose={() => setModal(false)}
                         />
                         </>
