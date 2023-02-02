@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Form.css';
+import styles from './Form.scss';
 
 //только начала делать форму
 function Form() {  
@@ -55,12 +55,15 @@ function Form() {
                     onChange={handleChange}
                 />
             </label>
-            <label>Нет отчества
-                <input type="checkbox" id="accept" name="accept" value="yes" />  
-            </label>
+            <div className='p-10'>
+                <label class="checkbox style-a">
+                    <input type="checkbox"/>
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">Нет отчества</div>
+                </label>
+            </div>
             <label>Дата рождения:
             <input 
-            
                 type="date" 
                 id="start" 
                 name="trip-start"
@@ -83,6 +86,7 @@ function Form() {
             <h3>Адрес доставки</h3>
             <label>Город:
                 <input 
+                    required placeholder="Город"
                     minlength="2"
                     maxlength="50"
                     type="text" 
@@ -93,6 +97,7 @@ function Form() {
             </label>
             <label>Улица:
                 <input 
+                    required placeholder="Улица"
                     minlength="2"
                     maxlength="60"
                     type="text" 
@@ -103,6 +108,7 @@ function Form() {
             </label>
             <label>Дом:
                 <input 
+                    required placeholder="Дом"
                     minlength="1"
                     maxlength="10"
                     type="number"
@@ -113,6 +119,7 @@ function Form() {
             </label>
             <label>Квартира:
                 <input 
+                    required placeholder="Квартира"
                     minlength="1"
                     maxlength="10"
                     type="number"

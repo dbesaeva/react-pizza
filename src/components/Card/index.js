@@ -13,7 +13,7 @@ function Card({name, id, imageUrl, price, onPlus}) {
     return (
         <div className={styles.card}>
             <div className={styles.favorite}>
-                <img src="img/favorite.svg" alt="Unliked"/>
+                <img src="img/pizza_card/favorite.svg" alt="Unliked"/>
             </div>
             <img className={styles.image} width={150} height={150} src={imageUrl} alt="Pizzas"/>
             <h5>{name}</h5>
@@ -24,7 +24,7 @@ function Card({name, id, imageUrl, price, onPlus}) {
                 </div>
             <img 
                 className={styles.plus} 
-                src={isAdded ? "img/cheked.svg" : "img/btn-plus.svg"}
+                src={isAdded ? "img/pizza_card/cheked.svg" : "img/pizza_card/btn-plus.svg"}
                 alt="Plus"
                 onClick={onClickPlus}
             />

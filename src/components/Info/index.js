@@ -11,11 +11,11 @@ const Info = () => {
             basil. When all of these delicious flavours are combined on a hand-kneaded pizza base, a 
             universally-adored pizza is created
         </p>
-        <img src="img/pizza.png" alt="Pizza" />
-        <img className={styles.imgLeft} src="img/pizza.png" alt="PizzaLeft" />
-        <img className={styles.imgRight} src="img/pizza.png" alt="PizzaRight" />
-        <img className={styles.orderNow} src="img/order-now-button.png" alt="Order" />
-        <img className={styles.addToCart} src="img/add-to-cart.png" alt="AddCart" />
+        <img src="img/information/pizza.png" alt="Pizza" />
+        <img className={styles.imgLeft} src="img/information/pizza.png" alt="PizzaLeft" />
+        <img className={styles.imgRight} src="img/information/pizza.png" alt="PizzaRight" />
+        <img className={styles.orderNow} src="img/information/order-now-button.png" alt="Order" />
+        <img className={styles.addToCart} src="img/information/add-to-cart.png" alt="AddCart" />
     </div>
   )
 }

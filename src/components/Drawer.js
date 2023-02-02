@@ -14,7 +14,7 @@ function Drawer({onClose, onRemove, items = []}) {
         <div className="overlay">
             <div className="drawer">
                 <h2 className="d-flex justify-between mb-30">Корзина
-                    <img onClick={onClose} className="cu-p" src="img/btn-remove.svg" alt="Close"/>
+                    <img onClick={onClose} className="cu-p" src="img/cart/btn-remove.svg" alt="Close"/>
                 </h2>
                 <div className="d-flex flex-column flex">
                     <div className="items flex"> 
@@ -28,7 +28,7 @@ function Drawer({onClose, onRemove, items = []}) {
                             <img 
                                 width={53} height={23}
                                 className="removeBtn" 
-                                src="img/btn-remove.svg" 
+                                src="img/cart/btn-remove.svg" 
                                 alt="Remove"
                                 onClick={() => onRemove(obj.id)}                          
                             />
@@ -43,14 +43,9 @@ function Drawer({onClose, onRemove, items = []}) {
                                 <div></div>
                                 <b>1200 руб.</b>
                             </li>
-                            <li>
-                                <span>Налог 4%:</span>
-                                <div></div>
-                                <b>1100 руб.</b>
-                            </li>
                         </ul>
                         <>
-                        <button onClick={() => setModal(true)} className="greenButton">Оформить <img src="img/arrow.svg" alt="Arrow"/></button>
+                        <button onClick={() => setModal(true)} className="greenButton">Оформить <img src="img/cart/arrow.svg" alt="Arrow"/></button>
                         <Modal 
                             isVisible={isModal}
                             title="Заполните указанную форму"
