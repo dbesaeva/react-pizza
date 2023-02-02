@@ -17,7 +17,7 @@ function Modal({ isVisible = false, title, content, footer, onClose }) {
       return () => document.removeEventListener('keydown', keydownHandler);
     });
   
-    return !isVisible ? null : (
+    return !!isVisible && (
       <div className="modal" onClick={onClose}>
         <div className="modal-dialog" onClick={e => e.stopPropagation()}>
           <div className="modal-header">
