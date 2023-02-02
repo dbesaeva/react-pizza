@@ -44,7 +44,7 @@ function App() {
   const onRemoveItem = (id) => {
     try {
       axios.delete(`https://63737c01348e9472990db5c5.mockapi.io/cart/${id}`);
-      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
+      setCartItems((prev) => prev.filter((item) => +item.id !== +id));
     } catch (error) {
       alert('Ошибка при удалении из корзины');
     }
