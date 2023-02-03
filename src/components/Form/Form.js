@@ -13,13 +13,42 @@ function Form() {
     setInputs((values) => ({ ...values, [name]: value, [textarea]: value }));
   };
 
-  const handleSubmit = (event) => {
+  function serializeForm(formNode) {
+    const { elements } = formNode
+  
+    const data = new FormData()
+  
+    Array.from(elements)
+      .filter((item) => !!item.name)
+      .forEach((element) => {
+        const { name, type } = element
+        const value = type === 'checkbox' ? element.checked : element.value
+  
+        data.append(name, value)
+      })
+  
+    return data
+  }
+
+  async function sendData(data) {
+    return await fetch('/api/apply/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: data,
+    })
+  }
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    alert(inputs);
+    const data = serializeForm(event.target)
+    const response = await sendData(data)
   };
 
+  const applicantForm = document.getElementById('forma')
+  applicantForm.addEventListener('submit', handleSubmit)
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="forma" action="/apply/" method="POST">
       <div className="justify-between mb-20">
         <h3>Персональные данные</h3>
         <label>
@@ -65,12 +94,12 @@ function Form() {
         </label>
         <div className="p-10">
           <label className="checkbox style-a">
-            <input type="checkbox" />
+            <input type="checkbox" name="checkbox"/>
             <div className="checkbox__checkmark"></div>
             <div className="checkbox__body">Нет отчества</div>
           </label>
         </div>
-        <label>
+        {/* <label>
           Дата рождения:
           <input
             type="date"
@@ -80,7 +109,7 @@ function Form() {
             min="1900-01-01"
             max="2005-12-31"
           />
-        </label>
+        </label> */}
         <label>
           Адрес проживания:
           <input
@@ -154,6 +183,7 @@ function Form() {
           />
         </label>
         <button type="submit">Отправить заявку</button>
+        <div id="loader" class="hidden">Отправляем...</div>
       </div>
     </form>
   );
