@@ -7,35 +7,15 @@ body {
   position: relative;
   width: 1728px;
   height: 1117px;
-  background: linear-gradient(129.35deg, #724521 16.71%, #482d1d 80.54%);
+  background: white;
   background-attachment: fixed;
-  color: white;
+  color: black;
 }
 
 .wrapper {
   max-width: 1480px;
   margin: 30px auto;
   margin-right: 5%;
-}
-
-header {
-  .name {
-    font-family: "Jolly Lodger", cursive;
-    font-style: normal;
-    font-weight: 100;
-    font-size: 60px;
-    line-height: 97px;
-    color: white;
-  }
-  img {
-    margin-right: 15px;
-    vertical-align: middle;
-  }
-
-  h3,
-  p {
-    margin: 0;
-  }
 }
 
 .overlay {
@@ -174,7 +154,7 @@ header {
 
 .search-block {
   background-color: white;
-  border: 1px solid #f3f3f3;
+  border: 1px solid #ebeaec;
   border-radius: 10px;
   padding: 0 15px;
   position: relative;

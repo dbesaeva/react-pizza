@@ -1,5 +1,6 @@
 import React from "react";
-import Modal from "../components/Modal/Modal";
+import Modal from "../../components/Modal/Modal";
+import "./Drawer.module.scss";
 
 function Drawer({ onClose, onRemove, items = [] }) {
   const [isModal, setModal] = React.useState(false);

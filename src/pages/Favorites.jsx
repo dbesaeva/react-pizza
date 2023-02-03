@@ -3,25 +3,23 @@ import PizzaCard from "../components/PizzaCard/PizzaCard";
 import { AppContext } from "../App";
 
 function Favorites() {
-  const { favorites, onAddToFavorite = { onAddToFavorite } } =
+  const { favorites, onAddToFavorite, onAddToCart } =
     React.useContext(AppContext);
 
   return (
     <div className="content p-40">
       <div className="d-flex align-center justify-between mb-40">
-        <h1>Мои закладки</h1>
+        <h1 className="m-40">Мои закладки</h1>
       </div>
 
-      <div className="d-flex flex-wrap">
-        {favorites.map((item) => (
+      <div className="d-flex flex-wrap mr-30">
+        {favorites.map((item, index) => (
           <PizzaCard
-            key={item.name}
-            id={item.id}
-            name={item.name}
-            price={item.price.default}
-            imageUrl={item.img}
+            key={index}
+            {...item}
             favorited={true}
             onFavorite={onAddToFavorite}
+            onPlus={(obj) => onAddToCart(obj)}
           />
         ))}
       </div>

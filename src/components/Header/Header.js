@@ -1,5 +1,6 @@
 import React from "react";
-import { AppContext } from "../App";
+import "./Header.module.scss";
+import { AppContext } from "../../App";
 import { Link } from "react-router-dom";
 
 function Header(props) {
@@ -18,8 +19,8 @@ function Header(props) {
       <ul className="d-flex">
         <li onClick={props.onClickCart} className="mr-30 cu-p">
           <img
-            width={23}
-            height={23}
+            width={21}
+            height={21}
             src="img/header/shopping-bag.svg"
             alt="Cart"
           />

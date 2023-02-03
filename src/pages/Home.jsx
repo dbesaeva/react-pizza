@@ -7,7 +7,7 @@ function Home({
   searchValue,
   setSearchValue,
   onChangeSearchInput,
-  onRemoveItem,
+  onAddToFavorite, 
 }) {
 
   return (
@@ -43,8 +43,8 @@ function Home({
               name={item.name}
               price={item.price.default}
               imageUrl={item.img}
-              onRemove={onRemoveItem}
               onPlus={(obj) => onAddToCart(obj)}
+              onFavorite={(obj) => onAddToFavorite(obj)}
             />
           ))}
       </div>

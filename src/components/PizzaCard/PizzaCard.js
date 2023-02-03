@@ -19,15 +19,17 @@ function PizzaCard({
   };
 
   const onClickFavorite = () => {
-    onFavorite({ id, parentId: id, name, price, imageUrl });
+    onFavorite({ id, parentId: id, name, imageUrl, price });
     setIsFavorite(!isFaforite);
   };
 
   return (
     <div className={styles.card}>
-      <div className={styles.favorite} onClick={onClickFavorite}>
-        {onFavorite && (
+      {onFavorite && (
+        <div className={styles.favorite} onClick={onClickFavorite}>
           <img
+            width={22}
+            height={22}
             src={
               isFaforite
                 ? "img/pizza_card/liked.svg"
@@ -35,16 +37,16 @@ function PizzaCard({
             }
             alt="Unliked"
           />
-        )}
-      </div>
+        </div>
+      )}
       <img
         className={styles.image}
-        width={150}
-        height={150}
+        width={120}
+        height={120}
         src={imageUrl}
         alt="Pizzas"
       />
-      <h5>{name}</h5>
+      <h4>{name}</h4>
       <div className="d-flex justify-between align-center">
         <div className="d-flex flex-column">
           <span>Цена:</span>
@@ -52,6 +54,8 @@ function PizzaCard({
         </div>
         {onPlus && (
           <img
+            width={25}
+            height={25}
             className={styles.plus}
             onClick={onClickPlus}
             src={
