@@ -2,17 +2,40 @@ import React from "react";
 import styles from "./PizzaCard.module.scss";
 import { AppContext } from "../../App";
 
-function PizzaCard({ name, id, imageUrl, price, onPlus }) {
+function PizzaCard({
+  name,
+  id,
+  imageUrl,
+  price,
+  onPlus,
+  onFavorite,
+  favorited = false,
+}) {
   const { isItemAdded } = React.useContext(AppContext);
+  const [isFaforite, setIsFavorite] = React.useState(favorited);
 
   const onClickPlus = () => {
     onPlus({ id, parentId: id, name, imageUrl, price });
   };
 
+  const onClickFavorite = () => {
+    onFavorite({ id, parentId: id, name, price, imageUrl });
+    setIsFavorite(!isFaforite);
+  };
+
   return (
     <div className={styles.card}>
-      <div className={styles.favorite}>
-        <img src="img/pizza_card/favorite.svg" alt="Unliked" />
+      <div className={styles.favorite} onClick={onClickFavorite}>
+        {onFavorite && (
+          <img
+            src={
+              isFaforite
+                ? "img/pizza_card/liked.svg"
+                : "img/pizza_card/favorite.svg"
+            }
+            alt="Unliked"
+          />
+        )}
       </div>
       <img
         className={styles.image}
