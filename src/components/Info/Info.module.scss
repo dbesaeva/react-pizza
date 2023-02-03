@@ -1,41 +1,41 @@
 .mainPage {
-    h1 {
-      position: absolute;
-      right: 469px;
-      top: 251px;
-      font-size: 50px;
-    }
-    p {
-      position: absolute;
-      width: 505px;
-      right: 192px;
-      top: 379px;
-      font-size: 20px;
-      font-weight: 55px;
-      line-height: 28px;
-    }
-    .imgLeft {
-      position: absolute;
-      width: 817px;
-      height: 543px;
-      left: -459px;
-      top: 305px;
-    }
-    .imgRight {
-      position: absolute;
-      width: 817px;
-      height: 543px;
-      left: 1579px;
-      top: 296px;
-    }
-    .orderNow {
-      position: absolute;
-      left: 1029px;
-      top: 672px;
-    }
-    .addToCart {
-      position: absolute;
-      left: 1274px;
-      top: 672px;
-    }
+  h1 {
+    position: absolute;
+    right: 469px;
+    top: 251px;
+    font-size: 50px;
   }
+  p {
+    position: absolute;
+    width: 505px;
+    right: 192px;
+    top: 379px;
+    font-size: 20px;
+    font-weight: 55px;
+    line-height: 28px;
+  }
+  .imgLeft {
+    position: absolute;
+    width: 817px;
+    height: 543px;
+    left: -459px;
+    top: 305px;
+  }
+  .imgRight {
+    position: absolute;
+    width: 817px;
+    height: 543px;
+    left: 1579px;
+    top: 296px;
+  }
+  .orderNow {
+    position: absolute;
+    left: 1029px;
+    top: 672px;
+  }
+  .addToCart {
+    position: absolute;
+    left: 1274px;
+    top: 672px;
+  }
+}
