@@ -1,6 +1,10 @@
 import React from "react";
+import { AppContext } from "../App";
 
 function Header(props) {
+  const {cartItems} =React.useContext(AppContext);
+  const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+
   return (
     <header className="d-flex justify-between align-center p-40">
       <div className="name d-flex align-center">
@@ -16,7 +20,7 @@ function Header(props) {
             src="img/header/shopping-bag.svg"
             alt="Cart"
           />
-          <span>1300 руб.</span>
+          <span>{totalPrice} руб.</span>
         </li>
         <li className="mr-20 cu-p">
           <img

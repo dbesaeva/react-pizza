@@ -44,13 +44,6 @@ function Drawer({ onClose, onRemove, items = [] }) {
           </div>
 
           <div className="cartTotalBlock">
-            <ul>
-              <li>
-                <span>Итого:</span>
-                <div></div>
-                <b>1200 руб.</b>
-              </li>
-            </ul>
             <>
               <button onClick={() => setModal(true)} className="greenButton">
                 Оформить <img src="img/cart/arrow.svg" alt="Arrow" />
