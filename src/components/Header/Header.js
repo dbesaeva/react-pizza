@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.module.scss";
+import styles from "./Header.module.scss";
 import { AppContext } from "../../App";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ function Header(props) {
   return (
     <header className="d-flex justify-between align-center p-40">
       <Link to="/">
-        <div className="name d-flex align-center">
+        <div className={styles.name}>
           <div>
             <h3>PizzaBro</h3>
           </div>

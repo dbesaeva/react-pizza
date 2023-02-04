@@ -23,16 +23,6 @@ const Info = () => {
         src="img/information/pizza.png"
         alt="PizzaRight"
       />
-      <img
-        className={styles.orderNow}
-        src="img/information/order-now-button.png"
-        alt="Order"
-      />
-      <img
-        className={styles.addToCart}
-        src="img/information/add-to-cart.png"
-        alt="AddCart"
-      />
     </div>
   );
 };

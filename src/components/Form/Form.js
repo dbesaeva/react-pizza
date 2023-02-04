@@ -1,54 +1,90 @@
 import React from "react";
 import "./Form.scss";
+import axios from "axios";
+import { AppContext } from "../../App";
 
-//только начала делать форму
 function Form() {
-  const [inputs, setInputs] = React.useState({});
-  const [textarea, setTextarea] = React.useState("");
+  const { cartItems, setCartItems } = React.useContext(AppContext);
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setTextarea(event.target.value);
-    setInputs((values) => ({ ...values, [name]: value, [textarea]: value }));
+  const onClickOrder = async () => {
+    try {
+      setCartItems([]);
+
+      for (let i = 0; i < cartItems.length; i++) {
+        const item = cartItems[i];
+        await axios.delete(
+          `https://63737c01348e9472990db5c5.mockapi.io/cart/${item.id}`
+        ); // бесплатный план мокапи вынуждает костылить
+      }
+    } catch (error) {
+      alert("Не удалось создать заказ :(");
+      console.error(error);
+    }
   };
 
-  function serializeForm(formNode) {
-    const { elements } = formNode
-  
-    const data = new FormData()
-  
-    Array.from(elements)
-      .filter((item) => !!item.name)
-      .forEach((element) => {
-        const { name, type } = element
-        const value = type === 'checkbox' ? element.checked : element.value
-  
-        data.append(name, value)
-      })
-  
-    return data
+  const orderData = {
+    name: "",
+    surname: "",
+    fathersname: "",
+    registrationAddress: "",
+    city: "",
+    street: "",
+    house: "",
+    apartment: "",
+    birthDate: "",
+    comment: "",
+    size: "small",
+    crust: "cheesy",
+    price: 0,
+  };
+
+  const [data, setData] = React.useState(orderData);
+
+  function handleChange(event) {
+    setData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   }
 
-  async function sendData(data) {
-    return await fetch('/api/apply/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'multipart/form-data' },
-      body: data,
-    })
-  }
-
-  const handleSubmit = async(event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const data = serializeForm(event.target)
-    const response = await sendData(data)
+    if (data) {
+      axios
+        .post(
+          "https://shift-winter-2023-backend.onrender.com/api/pizza/createOrder",
+          {
+            pizzas: [],
+            details: {
+              user: {
+                firstname: data.name,
+                lastname: data.surname,
+                birthDate: data.birthDate,
+                registrationAddress: data.registrationAddress,
+              },
+              address: {
+                city: data.city,
+                street: data.street,
+                house: data.house,
+                apartment: data.apartment,
+                comment: data.comment,
+              },
+            },
+          }
+        )
+        .then(function (response) {
+          alert("Заказ отправлен", response);
+          onClickOrder();
+        })
+        .catch(function (error) {
+          alert("Что-то пошло не так, повторите попытку позже");
+          console.log(error);
+        });
+    }
   };
-
-  const applicantForm = document.getElementById('forma')
-  applicantForm.addEventListener('submit', handleSubmit)
 
   return (
-    <form onSubmit={handleSubmit} id="forma" action="/apply/" method="POST">
+    <form onSubmit={handleSubmit} id="forma">
       <div className="justify-between mb-20">
         <h3>Персональные данные</h3>
         <label>
@@ -60,8 +96,8 @@ function Form() {
             minLength="2"
             maxLength="30"
             type="text"
-            name="username"
-            value={inputs.username || ""}
+            name="name"
+            value={data.name}
             onChange={handleChange}
           />
         </label>
@@ -74,8 +110,8 @@ function Form() {
             minLength="2"
             maxLength="30"
             type="text"
-            name="surnname"
-            value={inputs.surnname || ""}
+            name="surname"
+            value={data.surname}
             onChange={handleChange}
           />
         </label>
@@ -88,36 +124,36 @@ function Form() {
             maxLength="30"
             type="text"
             name="fathersname"
-            value={inputs.fathersname || ""}
+            value={data.fathersname}
             onChange={handleChange}
           />
         </label>
         <div className="p-10">
           <label className="checkbox style-a">
-            <input type="checkbox" name="checkbox"/>
+            <input type="checkbox" name="checkbox" />
             <div className="checkbox__checkmark"></div>
             <div className="checkbox__body">Нет отчества</div>
           </label>
         </div>
-        {/* <label>
+        <label>
           Дата рождения:
           <input
             type="date"
-            id="start"
-            name="trip-start"
-            value="2023-02-05"
+            name="birthDate"
+            value={data.birthDate}
             min="1900-01-01"
             max="2005-12-31"
+            onChange={handleChange}
           />
-        </label> */}
+        </label>
         <label>
           Адрес проживания:
           <input
             minLength="2"
             maxLength="30"
             type="text"
-            name="address"
-            value={inputs.address || ""}
+            name="registrationAddress"
+            value={data.registrationAddress}
             onChange={handleChange}
           />
         </label>
@@ -131,7 +167,7 @@ function Form() {
             maxLength="50"
             type="text"
             name="city"
-            value={inputs.city || ""}
+            value={data.city}
             onChange={handleChange}
           />
         </label>
@@ -144,7 +180,7 @@ function Form() {
             maxLength="60"
             type="text"
             name="street"
-            value={inputs.street || ""}
+            value={data.street}
             onChange={handleChange}
           />
         </label>
@@ -157,7 +193,7 @@ function Form() {
             maxLength="10"
             type="number"
             name="house"
-            value={inputs.house || ""}
+            value={data.house}
             onChange={handleChange}
           />
         </label>
@@ -170,20 +206,19 @@ function Form() {
             maxLength="10"
             type="number"
             name="apartment"
-            value={inputs.apartment || ""}
+            value={data.apartment}
             onChange={handleChange}
           />
         </label>
         <label>
           Заметка для курьера:
           <textarea
-            name="text"
-            value={inputs.text || ""}
+            name="comment"
+            value={data.comment}
             onChange={handleChange}
           />
         </label>
         <button type="submit">Отправить заявку</button>
-        <div id="loader" class="hidden">Отправляем...</div>
       </div>
     </form>
   );
